@@ -138,7 +138,7 @@ body {
 .kakunin tbody tr th,
 .kakunin tbody tr td
  {
-  text-align: center;
+  text-align: left;
   vertical-align: middle;  
 }
 .em1 {
@@ -165,6 +165,7 @@ body {
   <h1>あなたのブラウザが送信する情報</h1>
 
   <p>あなたのブラウザがこのウェブサーバーに送ってきた情報を表示しています。</p>
+  <p class="text-danger">* このウェブページはあくまで実験的なものです。定期的にこのようなウェブページが必要な方は、<a href="http://www.ugtop.com/spill.shtml">確認くん</a> などをご利用下さい。</p>
 
   <div class="table-responsive">
   <table class="kakunin table table-striped table-bordered table-hover">
@@ -174,32 +175,42 @@ body {
       <td><?php echo e(date("Y年m月d日 H時i分s秒", $_SERVER['REQUEST_TIME'])); ?></td>
     </tr>
     <tr>
-      <th>現在接続している場所(Server)</th>
+      <th>アクセスしたウェブサーバーのホスト名</th>
       <td><?php echo e($_SERVER['SERVER_NAME']); ?></td>
     </tr>
     <tr>
-      <th>あなたのＩＰアドレス(IPv4)</th>
-      <td class="em1"><?php echo e($_SERVER['REMOTE_ADDR']); ?></td>
-    </tr>
-    <tr>
-      <th>ゲートウェイの名前</th>
-      <td class="em2"><?php echo e(gethostbyaddr($_SERVER['REMOTE_ADDR'])); ?></td>
-    </tr>
-    <tr>
-      <th>現在のOS</th>
+      <th>現在のページにアクセスしているホスト名<br></th>
       <td>
-        <span><?php echo e(getOS($_SERVER['HTTP_USER_AGENT'])); ?></span><br>
-        解像度： <span id="ossize">* 解像度はJavaScriptで取得して表示する。</span><br>
-        <span>(解像度はクライアント側で取得して表示しています)</span>
+        <span class="em2"><?php echo e(gethostbyaddr($_SERVER['REMOTE_ADDR'])); ?></span><br>
+      <p>(通常はあなたが利用しているプロバイダーのサーバーになります。あなたはこのサーバーを通してインターネットにアクセスしています。)</p>
       </td>
     </tr>
     <tr>
-      <th>現在のブラウザー</th>
-      <td><?php echo e($_SERVER['HTTP_USER_AGENT']); ?></td>
+      <th>現在のページにアクセスしているホストのIPアドレス</th>
+      <td class="em1"><?php echo e($_SERVER['REMOTE_ADDR']); ?></td>
     </tr>
     <tr>
-      <th>サポート言語</th>
-      <td><?php echo e($_SERVER['HTTP_ACCEPT_LANGUAGE']); ?></td>
+      <th>あなたのOS</th>
+      <td>
+        <span><?php echo e(getOS($_SERVER['HTTP_USER_AGENT'])); ?></span><br>
+        解像度： <span id="ossize">* 解像度はJavaScriptで取得して表示する。</span><br>
+        <span>(解像度はクライアント側で取得して表示している)</span><br>
+        <span>(User-Agentから判定している)</span>
+      </td>
+    </tr>
+    <tr>
+      <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.43">User-Agent</a>ヘッダ</th>
+      <td>
+        <?php echo e($_SERVER['HTTP_USER_AGENT']); ?><br>
+        (あなたのブラウザー情報)
+      </td>
+    </tr>
+    <tr>
+      <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.4">Accept-Language</a>ヘッダ</th>
+      <td>
+        <?php echo e($_SERVER['HTTP_ACCEPT_LANGUAGE']); ?><br>
+        (ブラウザのサポートする言語)
+      </td>
     </tr>
     <tr>
 <!--      <th>クライアントの場所</th>
@@ -214,8 +225,11 @@ body {
       <td></td>
     </tr>-->
     <tr>
-      <th>どこのURLから来たか</th>
-      <td><?php echo e($_SERVER['HTTP_REFERER']); ?></td>
+      <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.36">Referer</a>ヘッダ</th>
+      <td>
+        <?php echo e($_SERVER['HTTP_REFERER']); ?><br>
+        (どこのURLからこのページに来たのか)
+      </td>
     </tr>
 <!--    <tr>
       <th>Proxyのバージョン等</th>
@@ -230,11 +244,14 @@ body {
       <td></td>
     </tr>-->
     <tr>
-      <th>MIMEの仕様</th>
-      <td><?php echo e($_SERVER['HTTP_ACCEPT']); ?></td>
+      <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.1">Accept</a>ヘッダ</th>
+      <td>
+        <?php echo e($_SERVER['HTTP_ACCEPT']); ?><br>
+        (現在のページにアクセスしているホスト)
+      </td>
     </tr>
     <tr>
-      <th>FORMの情報</th>
+      <th>アクセスに使用されたリクエストの<a href="https://tools.ietf.org/html/rfc2616#section-5.1.1">メソッド</a>名</th>
       <td><?php echo e($_SERVER['REQUEST_METHOD']); ?></td>
     </tr>
 <!--    <tr>
@@ -244,18 +261,21 @@ body {
     <tr>
       <th>FORMの送信バイト数</th>
       <td></td>
-    </tr>-->
+    </tr>
     <tr>
       <th>データ取得の手段</th>
       <td></td>
+    </tr>-->
+    <tr>
+      <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.3">Accept-Encoding</a>ヘッダ</th>
+      <td>
+        <?php echo e($_SERVER['HTTP_ACCEPT_ENCODING']); ?><br>
+        (ブラウザが受け入れるコンテント・コーディング(content-coding))
+      </td>
     </tr>
     <tr>
       <th>クッキー</th>
       <td><?php echo e(showCookies($_COOKIE)); ?></td>
-    </tr>
-    <tr>
-      <th>エンコードの仕様</th>
-      <td><?php echo e($_SERVER['HTTP_ACCEPT_ENCODING']); ?></td>
     </tr>
     </tboby>
   </table>
