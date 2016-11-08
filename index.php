@@ -132,7 +132,7 @@ body {
   margin: 30px;
 }
 .kakunin tbody tr th {
-  /*width: 200px;*/
+  min-width: 200px;
   background-color: #d9edf7;
 }
 .kakunin tbody tr th,
