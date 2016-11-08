@@ -124,7 +124,7 @@ header("X-Frame-Options: DENY");
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"  >
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>確認さん</title>
+  <title>あなたのブラウザが送信する情報</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <style type="text/css" nonce='<?php echo e($nonce2); ?>'>
@@ -162,7 +162,7 @@ body {
 </head>
 <body>
 
-  <h1>あなたの情報</h1>
+  <h1>あなたのブラウザが送信する情報</h1>
 
   <p>あなたのブラウザがこのウェブサーバーに送ってきた情報を表示しています。</p>
 
