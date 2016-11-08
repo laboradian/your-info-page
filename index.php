@@ -195,7 +195,7 @@ body {
         <span><?php echo e(getOS($_SERVER['HTTP_USER_AGENT'])); ?></span><br>
         解像度： <span id="ossize">* 解像度はJavaScriptで取得して表示する。</span><br>
         <span>(解像度はクライアント側で取得して表示している)</span><br>
-        <span>(User-Agentから判定している)</span>
+        <span>(OSはUser-Agentから判定している)</span>
       </td>
     </tr>
     <tr>
