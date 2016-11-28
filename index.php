@@ -179,15 +179,15 @@ body {
       <td><?php echo e($_SERVER['SERVER_NAME']); ?></td>
     </tr>
     <tr>
+      <th>現在のページにアクセスしているホストのIPアドレス</th>
+      <td class="em1"><?php echo e($_SERVER['REMOTE_ADDR']); ?></td>
+    </tr>
+    <tr>
       <th>現在のページにアクセスしているホスト名<br></th>
       <td>
         <span class="em2"><?php echo e(gethostbyaddr($_SERVER['REMOTE_ADDR'])); ?></span><br>
       <p>(通常はあなたが利用しているプロバイダーのサーバーになります。あなたはこのサーバーを通してインターネットにアクセスしています。)</p>
       </td>
-    </tr>
-    <tr>
-      <th>現在のページにアクセスしているホストのIPアドレス</th>
-      <td class="em1"><?php echo e($_SERVER['REMOTE_ADDR']); ?></td>
     </tr>
     <tr>
       <th>あなたのOS</th>
