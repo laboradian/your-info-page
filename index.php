@@ -193,7 +193,7 @@ body {
       <th>あなたのOS</th>
       <td>
         <span><?php echo e(getOS($_SERVER['HTTP_USER_AGENT'])); ?></span><br>
-        解像度： <span id="ossize">* 解像度はJavaScriptで取得して表示する。</span><br>
+        解像度： <span id="resolution">* 解像度はJavaScriptで取得して表示する。</span><br>
         <span>(解像度はクライアント側で取得して表示している)</span><br>
         <span>(OSはUser-Agentから判定している)</span>
       </td>
@@ -294,7 +294,7 @@ body {
   <script src="https://use.fontawesome.com/c215ece6c6.js"></script>
   <script type="text/javascript" nonce='<?php echo e($nonce1); ?>'>
 $(function(){
-  $('#ossize').text(screen.width + ' x ' + screen.height + ' pixel');
+  $('#resolution').text(screen.width + ' x ' + screen.height + ' pixel');
 });
   </script>
 </body>
