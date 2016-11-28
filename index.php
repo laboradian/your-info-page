@@ -182,13 +182,14 @@ body {
       <th>現在のページにアクセスしているホストのIPアドレス</th>
       <td>
         <span class="em1"><?php echo e($_SERVER['REMOTE_ADDR']); ?></span><br>
-      <p>(通常、あなたのコンピュータでデフォルトゲートウェイに設定しているデバイスになります(ルータであることが多いです)。</p>
+      <p>(通常、あなたのコンピュータでデフォルトゲートウェイに設定しているデバイスになります(ルータであることが多いです))。</p>
       </td>
     </tr>
     <tr>
       <th>現在のページにアクセスしているホスト名<br></th>
       <td>
-        <span class="em2"><?php echo e(gethostbyaddr($_SERVER['REMOTE_ADDR'])); ?></span>
+        <span class="em2"><?php echo e(gethostbyaddr($_SERVER['REMOTE_ADDR'])); ?></span><br>
+        <p>(通常、このホスト名はプロバイダが所有するホスト名になります。)</p>
       </td>
     </tr>
     <tr>
