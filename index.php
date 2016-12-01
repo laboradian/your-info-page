@@ -70,7 +70,7 @@ function getOS($user_agent) {
   return $os_platform;
 }
 /**
- * User-Agent文字列からウェブブラウザを判定してウェブブラウザ名を返す
+ * User-Agent文字列からブラウザを判定してブラウザ名を返す
  * ref. http://stackoverflow.com/questions/18070154/get-operating-system-info-with-php
  */
 function getBrowser($user_agent) {
@@ -124,7 +124,7 @@ header("X-Frame-Options: DENY");
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>あなたのウェブブラウザが送信する情報</title>
+  <title>あなたのブラウザが送信する情報</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <style type="text/css" nonce='<?php echo e($nonce2); ?>'>
@@ -162,9 +162,9 @@ body {
 </head>
 <body>
 
-  <h1>あなたのウェブブラウザが送信する情報</h1>
+  <h1>あなたのブラウザが送信する情報</h1>
 
-  <p>あなたのウェブブラウザがこのウェブサーバーに送ってきた情報を表示しています。</p>
+  <p>あなたのブラウザがこのウェブサーバーに送ってきた情報を表示しています。</p>
   <p class="text-danger">* このウェブページはあくまで実験的なものです。定期的にこのようなウェブページが必要な方は、<a href="http://www.ugtop.com/spill.shtml">確認くん</a> などをご利用下さい。</p>
 
   <div class="table-responsive">
@@ -205,14 +205,14 @@ body {
       <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.43">User-Agent</a>ヘッダ</th>
       <td>
         <?php echo e($_SERVER['HTTP_USER_AGENT']); ?><br>
-        (あなたのウェブブラウザー情報)
+        (あなたのブラウザー情報)
       </td>
     </tr>
     <tr>
       <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.4">Accept-Language</a>ヘッダ</th>
       <td>
         <?php echo e($_SERVER['HTTP_ACCEPT_LANGUAGE']); ?><br>
-        (ウェブブラウザのサポートする言語)
+        (ブラウザのサポートする言語)
       </td>
     </tr>
     <tr>
@@ -250,7 +250,7 @@ body {
       <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.1">Accept</a>ヘッダ</th>
       <td>
         <?php echo e($_SERVER['HTTP_ACCEPT']); ?><br>
-        (現在のページにアクセスしているホスト)
+        (ブラウザが希望するメディアタイプ)
       </td>
     </tr>
     <tr>
@@ -273,7 +273,7 @@ body {
       <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.3">Accept-Encoding</a>ヘッダ</th>
       <td>
         <?php echo e($_SERVER['HTTP_ACCEPT_ENCODING']); ?><br>
-        (ウェブブラウザが受け入れるコンテント・コーディング(content-coding))
+        (ブラウザが受け入れるコンテント・コーディング(content-coding))
       </td>
     </tr>
     <tr>
