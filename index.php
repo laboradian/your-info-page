@@ -124,13 +124,18 @@ header("X-Frame-Options: DENY");
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>あなたのブラウザが送信する情報</title>
+  <title>あなたのブラウザが送信した情報</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <style type="text/css" nonce='<?php echo e($nonce2); ?>'>
 body {
   margin: 30px;
 }
+
+#resolution {
+  margin-right: 10px;
+}
+
 .kakunin tbody tr th {
   min-width: 200px;
   background-color: #d9edf7;
@@ -139,7 +144,10 @@ body {
 .kakunin tbody tr td
  {
   text-align: left;
-  vertical-align: middle;  
+  vertical-align: middle;
+}
+.kakunin-req tbody tr th{
+  background-color: #dff0d8;
 }
 .em1 {
   font-size:200%;
@@ -162,127 +170,123 @@ body {
 </head>
 <body>
 
-  <h1>あなたのブラウザが送信する情報</h1>
+  <h1>あなたのブラウザが送信した情報</h1>
 
-  <p>あなたのブラウザがこのウェブサーバーに送ってきた情報を表示しています。</p>
-  <p class="text-danger">* このウェブページはあくまで実験的なものです。定期的にこのようなウェブページが必要な方は、<a href="http://www.ugtop.com/spill.shtml">確認くん</a> などをご利用下さい。</p>
+  <p>あなたのブラウザがこのWebサーバーに送ってきた情報を表示しています。</p>
+  <p class="text-danger">* このWebページはあくまで実験的なものです。定期的にこのようなウェブページが必要な方は、<a href="http://www.ugtop.com/spill.shtml">確認くん</a> などをご利用下さい。</p>
 
   <div class="table-responsive">
   <table class="kakunin table table-striped table-bordered table-hover">
     <tboby>
     <tr>
-      <th>情報を取得した時間</th>
+      <th>あなたからのリクエストを取得した時間</th>
       <td><?php echo e(date("Y年m月d日 H時i分s秒", $_SERVER['REQUEST_TIME'])); ?></td>
     </tr>
     <tr>
-      <th>アクセスしたウェブサーバーのホスト名</th>
+      <th>このWebサーバーのホスト名</th>
       <td><?php echo e($_SERVER['SERVER_NAME']); ?></td>
     </tr>
     <tr>
-      <th>現在のページにアクセスしているホストのIPアドレス</th>
+      <th>あなた側のコンピュータのIPアドレス</th>
       <td>
         <span class="em1"><?php echo e($_SERVER['REMOTE_ADDR']); ?></span><br>
-      <p>(通常、あなたのコンピュータでデフォルトゲートウェイに設定しているデバイスになります(ルータであることが多いです))。</p>
+      <p>(通常、あなたのコンピュータがデフォルトゲートウェイに設定しているデバイスのIPアドレスになります(ルータであることが多いです))。</p>
       </td>
     </tr>
     <tr>
-      <th>現在のページにアクセスしているホスト名<br></th>
+      <th>あなた側のコンピュータのホスト名<br></th>
       <td>
         <span class="em2"><?php echo e(gethostbyaddr($_SERVER['REMOTE_ADDR'])); ?></span><br>
-        <p>(通常、このホスト名はプロバイダが所有するホスト名になります。)</p>
+        <p>(上のIPアドレスに対応するホスト名です)</p>
+      </td>
+    </tr>
+    </tboby>
+  </table>
+  </div>
+
+  <h2>HTTPリクエストメッセージ <small>主な項目</small></h2>
+
+  <div class="table-responsive">
+  <table class="kakunin kakunin-req table table-striped table-bordered table-hover">
+    <tboby>
+    <tr>
+      <th class="success"><a href="https://tools.ietf.org/html/rfc2616#section-5.1.1">Method</a></th>
+      <td><?php echo e($_SERVER['REQUEST_METHOD']); ?><br>
+        (メソッド名)
       </td>
     </tr>
     <tr>
-      <th>あなたのOS</th>
+      <th><a href="https://tools.ietf.org/html/rfc2616#section-5.1.2">Request-URI</a></th>
       <td>
-        <span><?php echo e(getOS($_SERVER['HTTP_USER_AGENT'])); ?></span><br>
-        解像度： <span id="resolution">* 解像度はJavaScriptで取得して表示する。</span><br>
-        <span>(解像度はクライアント側で取得して表示している)</span><br>
-        <span>(OSはUser-Agentから判定している)</span>
+        <?php echo e($_SERVER['REQUEST_URI']); ?><br>
+        (要求されたURI)
       </td>
     </tr>
     <tr>
-      <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.43">User-Agent</a>ヘッダ</th>
+      <th><a href="https://tools.ietf.org/html/rfc2616#section-5.1.2">HTTP-Version</a></th>
+      <td>
+        <?php echo e($_SERVER['SERVER_PROTOCOL']); ?><br>
+        (ページがリクエストされた際のHTTPバージョン)
+      </td>
+    </tr>
+    <tr>
+      <th><a href="https://tools.ietf.org/html/rfc2616#section-14.23">Host</a></th>
+      <td>
+        <?php echo e($_SERVER['HTTP_HOST']); ?><br>
+        (要求されたホスト名)
+      </td>
+    </tr>
+    <tr>
+      <th><a href="https://tools.ietf.org/html/rfc2616#section-14.43">User-Agent</a></th>
       <td>
         <?php echo e($_SERVER['HTTP_USER_AGENT']); ?><br>
-        (あなたのブラウザー情報)
+        (あなたのブラウザ情報)
       </td>
     </tr>
     <tr>
-      <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.4">Accept-Language</a>ヘッダ</th>
+      <th>あなたのOS<br>(User-Agentから取得)</th>
+      <td>
+        <span><?php echo e(getOS($_SERVER['HTTP_USER_AGENT'])); ?></span><br>
+        解像度： <span id="resolution">* 解像度はJavaScriptで取得して表示する。</span>
+        <span>(この値はクライアント側で取得している)</span>
+      </td>
+    </tr>
+    <tr>
+      <th><a href="https://tools.ietf.org/html/rfc2616#section-14.4">Accept-Language</a></th>
       <td>
         <?php echo e($_SERVER['HTTP_ACCEPT_LANGUAGE']); ?><br>
-        (ブラウザのサポートする言語)
+        (ブラウザの希望する言語)
       </td>
     </tr>
     <tr>
-<!--      <th>クライアントの場所</th>
-      <td></td>
-    </tr>
     <tr>
-      <th>クライアントＩＤ</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>ユーザ名</th>
-      <td></td>
-    </tr>-->
-    <tr>
-      <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.36">Referer</a>ヘッダ</th>
+      <th><a href="https://tools.ietf.org/html/rfc2616#section-14.36">Referer</a></th>
       <td>
         <?php echo e($_SERVER['HTTP_REFERER']); ?><br>
         (どこのURLからこのページに来たのか)
       </td>
     </tr>
-<!--    <tr>
-      <th>Proxyのバージョン等</th>
-      <td></td>
-    </tr>
     <tr>
-      <th>Proxyのステータス</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Proxyの効果</th>
-      <td></td>
-    </tr>-->
-    <tr>
-      <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.1">Accept</a>ヘッダ</th>
+      <th><a href="https://tools.ietf.org/html/rfc2616#section-14.1">Accept</a></th>
       <td>
         <?php echo e($_SERVER['HTTP_ACCEPT']); ?><br>
         (ブラウザが希望するメディアタイプ)
       </td>
     </tr>
     <tr>
-      <th>アクセスに使用されたリクエストの<a href="https://tools.ietf.org/html/rfc2616#section-5.1.1">メソッド</a>名</th>
-      <td><?php echo e($_SERVER['REQUEST_METHOD']); ?></td>
-    </tr>
-<!--    <tr>
-      <th>FCONTENTのタイプ</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>FORMの送信バイト数</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>データ取得の手段</th>
-      <td></td>
-    </tr>-->
-    <tr>
-      <th>現在のリクエストの <a href="https://tools.ietf.org/html/rfc2616#section-14.3">Accept-Encoding</a>ヘッダ</th>
+      <th><a href="https://tools.ietf.org/html/rfc2616#section-14.3">Accept-Encoding</a></th>
       <td>
         <?php echo e($_SERVER['HTTP_ACCEPT_ENCODING']); ?><br>
-        (ブラウザが受け入れるコンテント・コーディング(content-coding))
+        (ブラウザが受け入れるエンコーディング)
       </td>
     </tr>
     <tr>
-      <th>クッキー</th>
+      <th><a href="https://tools.ietf.org/html/rfc6265#section-4.2">Cookie<a></th>
       <td><?php echo e(showCookies($_COOKIE)); ?></td>
     </tr>
     </tboby>
   </table>
-  </div> 
+  </div>
 
   <footer class="kakunin-footer">
     <p><i class="fa fa-copyright"></i> 2016 laboradian.com</p>
