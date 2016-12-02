@@ -247,7 +247,7 @@ body {
       <th>あなたのOS<br>(User-Agentから取得)</th>
       <td>
         <span><?php echo e(getOS($_SERVER['HTTP_USER_AGENT'])); ?></span><br>
-        解像度： <span id="resolution">* 解像度はJavaScriptで取得して表示する。</span>
+        解像度： <span id="resolution"></span>
         <span>(この値はクライアント側で取得している)</span>
       </td>
     </tr>
