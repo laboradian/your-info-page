@@ -112,8 +112,6 @@ header("Content-Security-Policy: default-src 'self';"
 header("X-XSS-Protection: 1; mode=block");
 // IEにコンテンツの内容を解析させない（ファイルの内容からファイルの種類を決定させない）。
 header("X-Content-Type-Options: nosniff");
-// IEでダウンロードしたファイルを直接開かせない。
-header("X-Download-Options: noopen");
 // このページを iframe に埋め込ませない
 header("X-Frame-Options: DENY");
 
