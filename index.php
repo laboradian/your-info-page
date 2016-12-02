@@ -208,34 +208,34 @@ body {
   <table class="kakunin kakunin-req table table-striped table-bordered table-hover">
     <tboby>
     <tr>
-      <th class="success"><a href="https://tools.ietf.org/html/rfc2616#section-5.1.1">Method</a></th>
+      <th class="success"><a href="https://tools.ietf.org/html/rfc7231#section-4">Method</a></th>
       <td><?php echo e($_SERVER['REQUEST_METHOD']); ?><br>
         (メソッド名)
       </td>
     </tr>
     <tr>
-      <th><a href="https://tools.ietf.org/html/rfc2616#section-5.1.2">Request-URI</a></th>
+      <th><a href="https://tools.ietf.org/html/rfc7230#section-3.1.1">Request-URI</a></th>
       <td>
         <?php echo e($_SERVER['REQUEST_URI']); ?><br>
         (要求されたURI)
       </td>
     </tr>
     <tr>
-      <th><a href="https://tools.ietf.org/html/rfc2616#section-5.1.2">HTTP-Version</a></th>
+      <th><a href="https://tools.ietf.org/html/rfc7230#section-3.1.1">HTTP-Version</a></th>
       <td>
         <?php echo e($_SERVER['SERVER_PROTOCOL']); ?><br>
         (ページがリクエストされた際のHTTPバージョン)
       </td>
     </tr>
     <tr>
-      <th><a href="https://tools.ietf.org/html/rfc2616#section-14.23">Host</a></th>
+      <th><a href="https://tools.ietf.org/html/rfc7230#section-5.4">Host</a></th>
       <td>
         <?php echo e($_SERVER['HTTP_HOST']); ?><br>
         (要求されたホスト名)
       </td>
     </tr>
     <tr>
-      <th><a href="https://tools.ietf.org/html/rfc2616#section-14.43">User-Agent</a></th>
+      <th><a href="https://tools.ietf.org/html/rfc7231#section-5.5.3">User-Agent</a></th>
       <td>
         <?php echo e($_SERVER['HTTP_USER_AGENT']); ?><br>
         (あなたのブラウザ情報)
@@ -250,7 +250,7 @@ body {
       </td>
     </tr>
     <tr>
-      <th><a href="https://tools.ietf.org/html/rfc2616#section-14.4">Accept-Language</a></th>
+      <th><a href="https://tools.ietf.org/html/rfc7231#section-5.3.5">Accept-Language</a></th>
       <td>
         <?php echo e($_SERVER['HTTP_ACCEPT_LANGUAGE']); ?><br>
         (ブラウザの希望する言語)
@@ -258,21 +258,21 @@ body {
     </tr>
     <tr>
     <tr>
-      <th><a href="https://tools.ietf.org/html/rfc2616#section-14.36">Referer</a></th>
+      <th><a href="https://tools.ietf.org/html/rfc7231#section-5.5.2">Referer</a></th>
       <td>
         <?php echo e($_SERVER['HTTP_REFERER']); ?><br>
         (どこのURLからこのページに来たのか)
       </td>
     </tr>
     <tr>
-      <th><a href="https://tools.ietf.org/html/rfc2616#section-14.1">Accept</a></th>
+      <th><a href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a></th>
       <td>
         <?php echo e($_SERVER['HTTP_ACCEPT']); ?><br>
         (ブラウザが希望するメディアタイプ)
       </td>
     </tr>
     <tr>
-      <th><a href="https://tools.ietf.org/html/rfc2616#section-14.3">Accept-Encoding</a></th>
+      <th><a href="https://tools.ietf.org/html/rfc7231#section-5.3.4">Accept-Encoding</a></th>
       <td>
         <?php echo e($_SERVER['HTTP_ACCEPT_ENCODING']); ?><br>
         (ブラウザが受け入れるエンコーディング)
